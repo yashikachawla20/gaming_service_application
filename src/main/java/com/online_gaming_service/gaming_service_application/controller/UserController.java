@@ -13,33 +13,31 @@ import com.online_gaming_service.gaming_service_application.services.UserService
 
 @RestController
 public class UserController {
-	
-    @Autowired
-    private UserService userService;
-	
-	
-    // SignUp Call
-	@PostMapping(path="/users")
+
+	@Autowired
+	private UserService userService;
+
+
+	// SignUp Call
+	@PostMapping(path="/register/user")
 	public ResponseDTO<RegisterUserResponseDTO> registerUser(@RequestBody RegisterUserRequestDTO request) {
-		System.out.println("Lets startttttt" + request);
-		System.out.println("Params are" + request.getPhoneNumber() + request.getName());
 		User user = userService.registerUser(
-                request.getName(),
-                request.getPhoneNumber(),
-                request.getPassword()
-        );
-		
+				request.getName(),
+				request.getPhoneNumber(),
+				request.getPassword()
+				);
+
 		ResponseDTO<RegisterUserResponseDTO> response = new ResponseDTO<>();
-		
-        if (user == null) {
-            response.setStatusCode(ResponseStatusCode.FAILURE);
-            return response;
-        }
-        
-        response.setStatusCode(ResponseStatusCode.SUCCESS);
-        RegisterUserResponseDTO responseDTO = new RegisterUserResponseDTO();
-        responseDTO.setUserId(user.getId());
-        response.setData(responseDTO);
-        return response;
+
+		if (user == null) {
+			response.setStatusCode(ResponseStatusCode.FAILURE);
+			return response;
+		}
+
+		response.setStatusCode(ResponseStatusCode.SUCCESS);
+		RegisterUserResponseDTO responseDTO = new RegisterUserResponseDTO();
+		responseDTO.setUserId(user.getId());
+		response.setData(responseDTO);
+		return response;
 	}
 }
