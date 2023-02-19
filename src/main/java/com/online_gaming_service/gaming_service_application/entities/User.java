@@ -7,14 +7,14 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-    private String name;
-    private String phoneNumber;
-    private String hashedPassword;
-	
+	private String name;
+	private String phoneNumber;
+	private String hashedPassword;
+
 	public User(long id, String name, String phoneNumber, String hashedPassword) {
 		super();
 		this.id = id;
@@ -22,9 +22,9 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.hashedPassword = hashedPassword;
 	}
-	
-	
-    public User() {
+
+
+	public User() {
 		super();
 	}
 
@@ -54,5 +54,5 @@ public class User {
 		this.hashedPassword = hashedPassword;
 	}
 
-	
+
 }
