@@ -1,6 +1,10 @@
 package com.online_gaming_service.gaming_service_application.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +20,8 @@ import com.online_gaming_service.gaming_service_application.entities.User;
 import com.online_gaming_service.gaming_service_application.services.ScoreService;
 import com.online_gaming_service.gaming_service_application.services.UserService;
 
+
+
 @RestController
 public class ScoreController {
 
@@ -23,7 +29,7 @@ public class ScoreController {
 	private ScoreService scoreService;
 	
 	// Update Score table
-	@PutMapping(path="/update/score")
+	@PutMapping("/update/score")
 	public ResponseDTO<UpdateScoreResponseDTO> updateScore(@RequestBody UpdateScoreRequestDTO request) {
 				
 		Score score = scoreService.updateScore(request.getUserId(), request.getCurrentScore());
@@ -39,5 +45,12 @@ public class ScoreController {
 		responseDTO.setUserId(score.getTotalScore());
 		response.setData(responseDTO);
 		return response;
+	}
+	
+	// Get Leaderboard Table of n top Contestants
+	@GetMapping("/leaderboard/score/{numberOfContestansts}")
+	public List<Score> getLeaderboardScore(@PathVariable String numberOfContestansts) {
+		List<Score> result = scoreService.getLeaderboardScore(Long.parseLong(numberOfContestansts));
+		return result;
 	}
 }

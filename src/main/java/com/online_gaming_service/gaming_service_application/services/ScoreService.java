@@ -1,6 +1,9 @@
 package com.online_gaming_service.gaming_service_application.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.online_gaming_service.gaming_service_application.entities.Score;
@@ -16,19 +19,21 @@ public class ScoreService {
 	
 	public Score updateScore(long userId, long currentScore) {
 		Score score = new Score();
-		score.setUserId(userId);
-		long prevScore = fetchPreviousTotalScoresOfUser(userId);
-		score.setTotalScore(prevScore+currentScore);
-
+		Score s =  scoreRepository.findByUserId(userId);
+		if(s == null) {
+			score.setUserId(userId);
+			score.setTotalScore(currentScore);
+		}else {
+			score = s;
+			score.setTotalScore(s.getTotalScore() + currentScore);
+		}
 		Score scoreResponse = scoreRepository.save(score);
-
 		return scoreResponse;
 	}
-	
-	public long fetchPreviousTotalScoresOfUser(long userId) {
-//		Score s = scoreRepository.find
-//		return s.getTotalScore();
-		return 0;
+
+	public List<Score> getLeaderboardScore(long numberOfContestansts) {
+		return scoreRepository.findTop5ByOrderByTotalScoreDesc();
 	}
+
 
 }
