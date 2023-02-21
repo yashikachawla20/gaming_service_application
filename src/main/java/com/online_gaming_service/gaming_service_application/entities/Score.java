@@ -1,12 +1,14 @@
 package com.online_gaming_service.gaming_service_application.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Score {
+public class Score implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
