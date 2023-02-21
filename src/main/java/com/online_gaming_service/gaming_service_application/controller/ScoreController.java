@@ -49,8 +49,8 @@ public class ScoreController {
 	
 	// Get Leaderboard Table of n top Contestants
 	@GetMapping("/leaderboard/score/{numberOfContestansts}")
-	public List<Score> getLeaderboardScore(@PathVariable String numberOfContestansts) {
-		List<Score> result = scoreService.getLeaderboardScore(Long.parseLong(numberOfContestansts));
+	public List<String> getLeaderboardScore(@PathVariable String numberOfContestansts) {
+		List<String> result = scoreService.getLeaderboardScore(Long.parseLong(numberOfContestansts));
 		return result;
 	}
 }
