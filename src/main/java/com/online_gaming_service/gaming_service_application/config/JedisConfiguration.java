@@ -14,10 +14,10 @@ public class JedisConfiguration {
 
 	@Value("${spring.redis.host}")
 	private String redisHostInfo;
-	
+
 	@Value("${spring.redis.port}")
 	private int redisPortInfo;
-		
+
 	@Bean
 	public JedisConnectionFactory jedisConnectionFactory() {
 		RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
@@ -25,13 +25,13 @@ public class JedisConfiguration {
 		redisStandaloneConfiguration.setPort(redisPortInfo);
 		return new JedisConnectionFactory(redisStandaloneConfiguration);
 	}
-	
+
 	@Bean
-	public RedisTemplate<String, Object> redisTemplate(){
+	public RedisTemplate<String, Object> redisTemplate() {
 		RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
 		redisTemplate.setConnectionFactory(jedisConnectionFactory());
 		redisTemplate.setEnableTransactionSupport(true);
 		redisTemplate.afterPropertiesSet();
 		return redisTemplate;
-	}	
+	}
 }

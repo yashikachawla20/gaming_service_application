@@ -21,8 +21,8 @@ public class UserService {
 		return userResponse;
 
 	}
-	
-    public boolean userExist(Long phoneNumber){
-        return userRepository.existsByPhoneNumber(phoneNumber);
-     }
+
+	public boolean userExist(Long phoneNumber) {
+		return userRepository.existsByPhoneNumber(phoneNumber);
+	}
 }

@@ -21,9 +21,10 @@ public class UserController {
 	public ResponseEntity<String> registerUser(@RequestBody RegisterUserRequestDTO registerUserRequest) {
 
 		try {
-			if (registerUserRequest.getPhoneNumber() == null || registerUserRequest.getFirstName() == null || registerUserRequest.getFirstName().isBlank()) {
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-						.body("Phone Number and First name are mandatory fields to register the user. Please provide them.");
+			if (registerUserRequest.getPhoneNumber() == null || registerUserRequest.getFirstName() == null
+					|| registerUserRequest.getFirstName().isBlank()) {
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+						"Phone Number and First name are mandatory fields to register the user. Please provide them.");
 			} else if (userService.userExist(registerUserRequest.getPhoneNumber())) {
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 						.body("User with the given phone number already exist. Please try with login");
@@ -39,7 +40,8 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.OK).body("User get Registered with Phone Number "
 					+ user.getPhoneNumber() + " And User id is " + user.getId());
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Got exception " + e.getMessage() + " Please try again by giving proper Values");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.body("Got exception " + e.getMessage() + " Please try again by giving proper Values");
 		}
 	}
 }

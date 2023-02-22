@@ -6,11 +6,11 @@ import org.springframework.stereotype.Repository;
 import com.online_gaming_service.gaming_service_application.entities.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, Long> {
 
 	User save(User user);
 
 	Optional<User> findById(Long id);
-	
+
 	public boolean existsByPhoneNumber(Long phoneNumber);
 }
