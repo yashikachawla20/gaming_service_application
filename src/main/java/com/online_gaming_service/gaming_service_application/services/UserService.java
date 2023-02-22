@@ -8,6 +8,11 @@ import com.online_gaming_service.gaming_service_application.repositories.UserRep
 @Service
 public class UserService {
 
+	public UserService(UserRepository userRepository) {
+		super();
+		this.userRepository = userRepository;
+	}
+
 	@Autowired
 	UserRepository userRepository;
 
