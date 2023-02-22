@@ -1,7 +1,6 @@
 package com.online_gaming_service.gaming_service_application.entities;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +19,7 @@ public class Score implements Serializable {
 	@Column(nullable = false)
 	private Long userId;
 
+	@Column(nullable = false)
 	private Long collectedScores;
 
 	public long getId() {

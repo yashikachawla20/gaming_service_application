@@ -29,5 +29,4 @@ public class LeaderboardResponseDTO {
 	public void setUserNameInfo(String userNameInfo) {
 		this.userNameInfo = userNameInfo;
 	}
-
 }
