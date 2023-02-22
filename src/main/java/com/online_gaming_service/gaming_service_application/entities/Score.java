@@ -2,45 +2,58 @@ package com.online_gaming_service.gaming_service_application.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Score implements Serializable{
+@Table(name = "score")
+public class Score implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private long userId;
-	private long totalScore;
-	
-	public Long getId() {
+	private long id;
+
+	@Column(nullable = false)
+	private Long userId;
+
+	private Long collectedScores;
+
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+
+	public void setId(long id) {
 		this.id = id;
 	}
-	public long getUserId() {
+
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(long userId) {
+
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	public long getTotalScore() {
-		return totalScore;
+
+	public Long getCollectedScores() {
+		return collectedScores;
 	}
-	public void setTotalScore(long totalScore) {
-		this.totalScore = totalScore;
+
+	public void setCollectedScores(Long collectedScores) {
+		this.collectedScores = collectedScores;
 	}
-	public Score(Long id, long userId, long totalScore) {
+
+	public Score(long id, Long userId, Long collectedScores) {
 		super();
 		this.id = id;
 		this.userId = userId;
-		this.totalScore = totalScore;
+		this.collectedScores = collectedScores;
 	}
+
 	public Score() {
 		super();
-	}	
+	}
 }

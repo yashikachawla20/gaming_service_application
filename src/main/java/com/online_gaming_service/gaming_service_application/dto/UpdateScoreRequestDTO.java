@@ -1,21 +1,24 @@
 package com.online_gaming_service.gaming_service_application.dto;
 
 public class UpdateScoreRequestDTO {
-	private long userId;
-	private long currentScore;
-	
-	public long getUserId() {
+
+	private Long userId;
+
+	private Long currentScore;
+
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(long userId) {
+
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	public long getCurrentScore() {
+
+	public Long getCurrentScore() {
 		return currentScore;
 	}
-	public void setCurrentScore(long currentScore) {
+
+	public void setCurrentScore(Long currentScore) {
 		this.currentScore = currentScore;
 	}
-	
-	
 }
