@@ -2,6 +2,7 @@ package com.online_gaming_service.gaming_service_application.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.online_gaming_service.gaming_service_application.dto.RegisterUserRequestDTO;
-import com.online_gaming_service.gaming_service_application.dto.RegisterUserResponseDTO;
 import com.online_gaming_service.gaming_service_application.dto.ResponseDTO;
 import com.online_gaming_service.gaming_service_application.dto.ResponseStatusCode;
 import com.online_gaming_service.gaming_service_application.dto.UpdateScoreRequestDTO;

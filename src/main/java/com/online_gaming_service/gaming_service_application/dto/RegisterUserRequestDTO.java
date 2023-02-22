@@ -1,26 +1,33 @@
 package com.online_gaming_service.gaming_service_application.dto;
 
 public class RegisterUserRequestDTO {
-	private String name;
-	private String phoneNumber;
-	private String password;
-
-	public String getName() {
-		return name;
+	private String firstName;
+	private String lastName;
+	private Long phoneNumber;
+	private Integer age;
+	
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getPhoneNumber() {
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public String getPassword() {
-		return password;
+	public Integer getAge() {
+		return age;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 }

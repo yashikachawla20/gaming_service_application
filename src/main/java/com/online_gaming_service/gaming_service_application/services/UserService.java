@@ -11,17 +11,18 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 
-	public User registerUser(String name,
-			String phoneNumber,
-			String password) {
+	public User registerUser(String firstName, String lastName, Long phoneNumber, Integer age) {
 		User user = new User();
-		user.setName(name);
-		user.setHashedPassword(password);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
 		user.setPhoneNumber(phoneNumber);
-
+		user.setAge(age);
 		User userResponse = userRepository.save(user);
-
 		return userResponse;
 
 	}
+	
+    public boolean userExist(Long phoneNumber){
+        return userRepository.existsByPhoneNumber(phoneNumber);
+     }
 }
