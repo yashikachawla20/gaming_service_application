@@ -1,5 +1,7 @@
 package com.online_gaming_service.gaming_service_application.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.online_gaming_service.gaming_service_application.entities.User;
@@ -29,5 +31,13 @@ public class UserService {
 
 	public boolean userExist(Long phoneNumber) {
 		return userRepository.existsByPhoneNumber(phoneNumber);
+	}
+	
+	public User loginUser(Long phoneNumber) {
+		Optional<User> userResponse = userRepository.findByPhoneNumber(phoneNumber);
+		if (userResponse.isEmpty()) {
+			return null;
+		}
+		return userResponse.get();
 	}
 }
